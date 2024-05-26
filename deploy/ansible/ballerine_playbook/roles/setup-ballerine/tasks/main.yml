@@ -7,4 +7,6 @@
 
 - import_tasks: start-docker.yml
 
+- import_tasks: clone-ballerine.yml
+
 - import_tasks: setup-ballerine.yml

@@ -1,0 +1,8 @@
+---
+- name: Clone a github repository
+  ansible.builtin.git:
+    repo: https://github.com/ballerine-io/ballerine.git
+    dest: "{{ install_dir }}"
+    key_file: ""
+    version: dev
+  tags: packer

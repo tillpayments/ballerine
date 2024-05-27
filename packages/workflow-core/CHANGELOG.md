@@ -1,5 +1,11 @@
 # @ballerine/workflow-core
 
+## 0.6.10
+
+### Patch Changes
+
+- Remove redundant log
+
 ## 0.6.9
 
 ### Patch Changes

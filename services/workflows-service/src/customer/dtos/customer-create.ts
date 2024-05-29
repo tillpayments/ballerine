@@ -22,7 +22,6 @@ export class CustomerCreateDto {
     type: String,
   })
   @IsString()
-  @IsOptional()
   customerStatus?: CustomerStatuses;
 
   @ApiProperty({
@@ -57,7 +56,6 @@ export class CustomerCreateDto {
     type: Object,
   })
   @IsObject()
-  @IsOptional()
   authenticationConfiguration?: TAuthenticationConfiguration;
 
   @ApiProperty({

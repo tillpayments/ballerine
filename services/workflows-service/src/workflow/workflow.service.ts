@@ -797,7 +797,6 @@ export class WorkflowService {
     decision: {
       status: 'approve' | 'reject' | 'revision' | 'revised' | null;
       reason?: string;
-      comment?: string;
     },
     projectIds: TProjectIds,
     currentProjectId: TProjectId,
@@ -828,7 +827,6 @@ export class WorkflowService {
           return {
             revisionReason: null,
             rejectionReason: null,
-            comment: decision.comment,
           };
         }
 
@@ -836,7 +834,6 @@ export class WorkflowService {
           return {
             revisionReason: null,
             rejectionReason: decision?.reason,
-            comment: decision.comment,
           };
         }
 
@@ -844,7 +841,6 @@ export class WorkflowService {
           return {
             revisionReason: decision?.reason,
             rejectionReason: null,
-            comment: decision.comment,
           };
         }
 

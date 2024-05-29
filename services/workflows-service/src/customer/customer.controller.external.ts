@@ -14,7 +14,6 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { ZodValidationPipe } from '@/common/pipes/zod.pipe';
 import { CustomerSubscriptionDto } from './dtos/customer-config-create.dto';
 import { ValidationError } from '@/errors';
-import { randomUUID } from 'node:crypto';
 
 @swagger.ApiTags('Customers')
 @swagger.ApiExcludeController()
@@ -38,16 +37,8 @@ export class CustomerControllerExternal {
       };
     }
 
-    const apiKey = customer.authenticationConfiguration?.authValue ?? randomUUID();
-
     const createdCustomer = (await this.service.create({
-      data: {
-        ...customer,
-        authenticationConfiguration: {
-          ...customer.authenticationConfiguration,
-          authValue: apiKey,
-        },
-      },
+      data: customer,
       select: {
         id: true,
         name: true,
@@ -69,10 +60,7 @@ export class CustomerControllerExternal {
       });
     }
 
-    return {
-      ...createdCustomer,
-      apiKey,
-    };
+    return createdCustomer;
   }
 
   @common.Get('/me')

@@ -29,10 +29,8 @@ import { UseGuards, UsePipes } from '@nestjs/common';
 import * as swagger from '@nestjs/swagger';
 import { WorkflowDefinition, WorkflowRuntimeData } from '@prisma/client';
 // import * as nestAccessControl from 'nest-access-control';
-import { WorkflowAssigneeGuard } from '@/auth/assignee-asigned-guard.service';
-import { isRecordNotFoundError } from '@/prisma/prisma.util';
-import { FilterQuery } from '@/workflow/types';
 import * as errors from '../errors';
+import { isRecordNotFoundError } from '@/prisma/prisma.util';
 import { DocumentUpdateParamsInput } from './dtos/document-update-params-input';
 import { DocumentUpdateInput } from './dtos/document-update-update-input';
 import { EmitSystemBodyInput, EmitSystemParamInput } from './dtos/emit-system-event-input';
@@ -41,6 +39,8 @@ import { WorkflowEventInput } from './dtos/workflow-event-input';
 import { WorkflowDefinitionWhereUniqueInput } from './dtos/workflow-where-unique-input';
 import { WorkflowDefinitionModel } from './workflow-definition.model';
 import { WorkflowService } from './workflow.service';
+import { WorkflowAssigneeGuard } from '@/auth/assignee-asigned-guard.service';
+import { FilterQuery } from '@/workflow/types';
 
 @swagger.ApiExcludeController()
 @common.Controller('internal/workflows')
@@ -267,7 +267,6 @@ export class WorkflowControllerInternal {
         {
           status: data?.decision,
           reason: data?.reason,
-          comment: data?.comment,
         },
         projectIds,
         currentProjectId,

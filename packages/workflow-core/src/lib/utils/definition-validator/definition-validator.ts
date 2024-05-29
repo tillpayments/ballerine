@@ -20,7 +20,7 @@ export const definitionValidator = (
     validateTransitionOnEvent({
       stateNames: Object.keys(definition.states),
       currentState: 'NULL_AS_UNINITIATED_STATE',
-      transition: definition.initial,
+      targetState: definition.initial,
     });
   }
 
